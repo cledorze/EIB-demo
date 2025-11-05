@@ -3,7 +3,7 @@ image:
   imageType: iso
   arch: x86_64
   baseImage: SL-Micro.x86_64-6.1-Base-SelfInstall-GM.install.iso
-  outputImageName: decath-shop1-native.iso
+  outputImageName: site1-native.iso
 
 operatingSystem:
   isoConfiguration:

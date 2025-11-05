@@ -1,13 +1,13 @@
-# Decath Shop1 - Native EIB Configuration
+# Site1 - Native EIB Configuration
 
-This directory contains the native Edge Image Builder (EIB) configuration for the `decath-shop1` node, following the official SUSE Edge 3.4 documentation.
+This directory contains the native Edge Image Builder (EIB) configuration for the `site1` node, following the official SUSE Edge 3.4 documentation.
 
 ## Configuration Overview
 
 ### Image Definition
-- **File**: `iso-definition-decath-shop1-native.yaml`
+- **File**: `iso-definition-site1-native.yaml`
 - **Base Image**: SL-Micro.x86_64-6.1-Base-SelfInstall-GM.install.iso
-- **Output**: decath-shop1-native.iso
+- **Output**: site1-native.iso
 - **Architecture**: x86_64
 
 ### Users Configuration
@@ -21,7 +21,7 @@ This directory contains the native Edge Image Builder (EIB) configuration for th
 - **SSH Keys**: Configured for both root and tofix users
 
 ### System Configuration
-- **Hostname**: decath-shop1.cledorze.lan
+- **Hostname**: site1.cledorze.lan
 - **Timezone**: Europe/Paris (configured via osFiles)
 - **Network**: Static IP configuration (100.100.100.248/24)
 
@@ -36,7 +36,7 @@ This directory contains the native Edge Image Builder (EIB) configuration for th
 
 ```
 eib/
-├── iso-definition-decath-shop1-native.yaml  # Main EIB definition
+├── iso-definition-site1-native.yaml  # Main EIB definition
 ├── osFiles/                                 # System configuration files
 │   ├── etc/
 │   │   ├── hostname                        # Hostname configuration
@@ -52,11 +52,11 @@ eib/
 ## Building the Image
 
 ```bash
-export CONFIG_DIR=/home/tofix/LAB/Decath/demodecat/eib
+export CONFIG_DIR=/home/tofix/LAB/EIB-demo/eib
 podman run --rm -it --privileged \
   -v $CONFIG_DIR:/eib \
   registry.suse.com/edge/3.4/edge-image-builder:1.3.0 \
-  build --definition-file iso-definition-decath-shop1-native.yaml
+  build --definition-file iso-definition-site1-native.yaml
 ```
 
 ## Key Features
@@ -89,12 +89,12 @@ The configuration has been validated using:
 podman run --rm -it --privileged \
   -v $CONFIG_DIR:/eib \
   registry.suse.com/edge/3.4/edge-image-builder:1.3.0 \
-  validate --definition-file iso-definition-decath-shop1-native.yaml
+  validate --definition-file iso-definition-site1-native.yaml
 ```
 
 ## Deployment
 
-The generated `decath-shop1-native.iso` can be deployed to bare metal or virtual machines. After deployment, the system will have:
+The generated `site1-native.iso` can be deployed to bare metal or virtual machines. After deployment, the system will have:
 
 - Pre-configured users with SSH access
 - Kubernetes cluster ready for VM management
