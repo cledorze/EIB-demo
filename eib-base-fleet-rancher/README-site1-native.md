@@ -35,7 +35,7 @@ This directory contains the native Edge Image Builder (EIB) configuration for th
 ## Directory Structure
 
 ```
-eib/
+eib-base-fleet-rancher/
 ├── iso-definition-site1-native.yaml  # Main EIB definition
 ├── osFiles/                                 # System configuration files
 │   ├── etc/
@@ -52,7 +52,7 @@ eib/
 ## Building the Image
 
 ```bash
-export CONFIG_DIR=/home/tofix/LAB/EIB-demo/eib
+export CONFIG_DIR=/home/tofix/LAB/EIB-demo/eib-base-fleet-rancher
 podman run --rm -it --privileged \
   -v $CONFIG_DIR:/eib \
   registry.suse.com/edge/3.4/edge-image-builder:1.3.0 \
