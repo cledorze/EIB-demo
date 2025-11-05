@@ -1,0 +1,42 @@
+# Elemental Registration Configuration
+# This file must be downloaded from the Elemental extension in Rancher
+# at rancher.cledorze.lan
+#
+# To download the configuration file:
+# 1. Go to Rancher UI: https://rancher.cledorze.lan
+# 2. Navigate to the Elemental extension
+# 3. Create or select a machine registration
+# 4. Download the elemental_config.yaml file
+# 5. Place it in this directory (eib-base-fleet-rancher/elemental/)
+#
+# The configuration file will contain:
+# - Rancher server URL (rancher.cledorze.lan)
+# - Registration token
+# - Cluster/Project configuration
+# - Other Elemental-specific settings
+#
+# Example structure (actual values will come from Rancher):
+# ---
+# apiVersion: elemental.cattle.io/v1beta1
+# kind: MachineRegistration
+# metadata:
+#   name: <registration-name>
+#   namespace: fleet-default
+# spec:
+#   machineName: <machine-name>
+#   machineLabels:
+#     <labels>
+#   config:
+#     element:
+#       system:
+#         hostname: <hostname>
+#       registration:
+#         url: https://rancher.cledorze.lan
+#         ca-cert: <ca-cert>
+#         emu: true
+#         tpm: false
+#       install:
+#         device: /dev/sda
+#         poweroff: true
+#         reboot: false
+

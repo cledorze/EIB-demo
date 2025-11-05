@@ -25,16 +25,16 @@ operatingSystem:
       createHomeDir: true
       encryptedPassword: $6$jHugJNNd3HElGsUZ$eodjVe4te5ps44SVcWshdfWizrP.xAyd71CVEXazBJ/.v799/WRCBXxfYmunlBO2yp1hm/zb4r8EmnrrNCF.P/
       sshKeys:
-        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDKrMEscmfI/N4oGtSjQ6r/MtjvFVDKI58/RMQJw3um mfatrez@home
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDKrMEscmfI/N4oGtSjQ6r/MtjvFVDKI58/RMQJw3um cledorze@home
     - username: tofix
       createHomeDir: true
       encryptedPassword: $6$jHugJNNd3HElGsUZ$eodjVe4te5ps44SVcWshdfWizrP.xAyd71CVEXazBJ/.v799/WRCBXxfYmunlBO2yp1hm/zb4r8EmnrrNCF.P/
 
-    - username: mfatrez
+    - username: cledorze
       createHomeDir: true
       encryptedPassword: $6$cy3Xd4FTb0PY/UUE$sIY6a7Xb8MWlKHySH8chvqTovEBA5Eu2RjatlxFl2Qnps56rL62yqeDrjMraTy2Te0gYGG4iE/iWNjz0s1h.R.
       sshKeys:
-        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDKrMEscmfI/N4oGtSjQ6r/MtjvFVDKI58/RMQJw3um mfatrez@home
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDKrMEscmfI/N4oGtSjQ6r/MtjvFVDKI58/RMQJw3um cledorze@home
   packages:
     sccRegistrationCode: INTERNAL-USE-ONLY-6ed2-8a6c
     packageList:
