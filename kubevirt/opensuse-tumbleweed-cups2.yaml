@@ -1,0 +1,83 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  creationTimestamp: null
+  name: opensuse-tumbleweed-cups2
+spec:
+  runStrategy: Always
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      domain:
+        machine:
+          type: q35
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: containerdisk
+          - disk:
+              bus: virtio
+            name: cloudinit
+          - disk:
+              bus: virtio
+            name: datavolume
+          rng: {}
+        resources:
+          requests:
+            memory: 4Gi
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - containerDisk:
+          image: quay.io/containerdisks/opensuse-tumbleweed:1.0.0
+        name: containerdisk
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            # The default username is: opensuse
+            disable_root: false
+            ssh_pwauth: True
+            package_reboot_if_required: true
+            package_update: true
+            package_upgrade: true
+            packages:
+              - cups
+            write_files:
+            - path: /etc/cups/cups-file-demo2.conf
+              content: |
+                my configuration file
+                here. defined for demo2
+              owner: 'root:lp'
+              permissions: '0640'
+              defer: true
+            users:
+              - default
+              - name: suse
+                groups: sudo
+                shell: /bin/bash
+                sudo:  ALL=(ALL) NOPASSWD:ALL
+                lock_passwd: False
+                plain_text_passwd: 'suse'            
+            ssh_authorized_keys:
+              - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDKrMEscmfI/N4oGtSjQ6r/MtjvFVDKI58/RMQJw3um
+        name: cloudinit
+      - dataVolume:
+          name: cups2-datavolume
+        name: datavolume
+status: {}
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: cups2-datavolume
+spec:
+  source:
+    blank: {}
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 35Gi
+    storageClassName: local-path

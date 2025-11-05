@@ -1,0 +1,4 @@
+cni:
+  - cilium
+selinux: false
+system-default-registry: registry.rancher.com

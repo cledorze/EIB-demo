@@ -1,0 +1,14 @@
+# Ignore ISO files
+*.iso
+
+# Ignore build artifacts
+_builds/
+*.log
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore system files
+.DS_Store
+Thumbs.db

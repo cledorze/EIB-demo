@@ -1,0 +1,54 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: opensuse-tumbleweed-vm
+  namespace: default
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: opensuse-tumbleweed-vm
+    spec:
+      architecture: amd64
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: rootdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            name: default
+        machine:
+          type: q35
+        resources:
+          requests:
+            cpu: "2"
+            memory: 16Gi
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - containerDisk:
+          image: quay.io/containerdisks/opensuse-tumbleweed:1.0.0
+        name: rootdisk
+      - cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            password: opensuse
+            chpasswd:
+              expire: false
+            ssh_pwauth: true
+            users:
+            - name: opensuse
+              password: opensuse
+              sudo: ALL=(ALL) NOPASSWD:ALL
+              ssh_authorized_keys:
+              - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7vbqajDhA...
+            runcmd:
+            - echo "OpenSUSE Tumbleweed VM is ready!"
+        name: cloudinitdisk
